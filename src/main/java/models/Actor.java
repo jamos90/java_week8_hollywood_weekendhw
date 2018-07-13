@@ -79,4 +79,20 @@ public class Actor {
     public void setAwards(List<Award> awards) {
         this.awards = awards;
     }
+
+    public void addAawrd(Award award){
+        this.awards.add(award);
+    }
+
+    public void removeAward(Award award){
+        this.awards.remove(award);
+    }
+
+    public void removeAllAwards(){
+        this.awards.clear();
+    }
+
+    public int getAwardCount() {
+        return this.awards.size();
+    }
 }
