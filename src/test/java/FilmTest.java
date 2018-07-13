@@ -5,11 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertSame;
 
 public class FilmTest {
 
     Film film;
     Director director;
+    Actor actor;
 
     @Before
     public void setUp(){
@@ -33,5 +35,17 @@ public class FilmTest {
     public void hasDirector(){
         assertEquals(director, film.getDirector());
     }
+
+    @Test
+    public void hasActorsList(){
+        assertEquals(0, film.actorsCount());
+    }
+
+    @Test
+    public void canAddActorsToFilm(){
+        film.addActor(actor);
+        assertEquals(1,film.actorsCount());
+    }
+
 
 }

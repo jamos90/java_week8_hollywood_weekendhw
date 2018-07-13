@@ -86,6 +86,11 @@ public class Film {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
+
+    public int actorsCount() {
+       return this.actors.size();
+    }
+
 }
 
 
