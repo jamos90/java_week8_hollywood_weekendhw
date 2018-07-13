@@ -1,5 +1,9 @@
 package models;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +21,9 @@ public class Director {
         this.films = new ArrayList<Film>();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -25,6 +32,8 @@ public class Director {
         this.id = id;
     }
 
+
+    @Column(name= "names")
     public String getName() {
         return name;
     }
@@ -33,6 +42,8 @@ public class Director {
         this.name = name;
     }
 
+
+   @Column(name = "salaries")
     public double getSalary() {
         return salary;
     }
@@ -41,6 +52,8 @@ public class Director {
         this.salary = salary;
     }
 
+
+    @Column(name = "films")
     public List<Film> getFilms() {
         return films;
     }
