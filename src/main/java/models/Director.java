@@ -1,9 +1,6 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +50,7 @@ public class Director {
     }
 
 
-    @Column(name = "films")
+    @OneToMany(mappedBy = "director", fetch = FetchType.LAZY)
     public List<Film> getFilms() {
         return films;
     }

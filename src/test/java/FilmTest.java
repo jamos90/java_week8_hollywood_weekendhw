@@ -33,10 +33,10 @@ public class FilmTest {
     }
 
 
-    @Test
-    public void hasDirector(){
-        assertEquals(director, film.getDirector());
-    }
+//    @Test
+//    public void hasDirector(){
+//        assertEquals(director, film.getDirector());
+//    }
 
     @Test
     public void hasActorsList(){

@@ -1,7 +1,6 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +25,10 @@ public class Actor {
         this.awards = new ArrayList<Award>();
     }
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -34,6 +37,7 @@ public class Actor {
         this.id = id;
     }
 
+    @Column(name = "names")
     public String getName() {
         return name;
     }
@@ -42,6 +46,8 @@ public class Actor {
         this.name = name;
     }
 
+
+    @Column(name = "feess")
     public double getFee() {
         return fee;
     }
@@ -50,6 +56,10 @@ public class Actor {
         this.fee = fee;
     }
 
+    @ManyToMany
+    @JoinTable(name ="actors_films",
+    joinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)},
+    inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)})
     public List<Film> getFilms() {
         return films;
     }
@@ -58,6 +68,10 @@ public class Actor {
         this.films = films;
     }
 
+    @ManyToMany
+    @JoinTable(name ="actors_awards",
+            joinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "award_id", nullable = false, updatable = false)})
     public List<Award> getAwards() {
         return awards;
     }
