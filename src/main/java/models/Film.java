@@ -91,6 +91,9 @@ public class Film {
        return this.actors.size();
     }
 
+    public void addActor(Actor actor) {
+        this.actors.add(actor);
+    }
 }
 
 
