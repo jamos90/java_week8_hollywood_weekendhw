@@ -1,6 +1,9 @@
 import db.DBActor;
+import db.DBDirector;
 import db.DBHelper;
 import models.*;
+
+import java.util.List;
 
 public class Runner {
 
@@ -20,8 +23,13 @@ public class Runner {
         Film film1 = new Film("Star Wars",1000000, director, Genre.SCIFI);
         DBHelper.save(film1);
 
+        Film film2 = new Film("Monsters", 2000000,director, Genre.SCIFI);
+        DBHelper.save(film2);
+
 
         DBActor.addActorToAward(actor, oscar);
+
+        List<Film> directorsFilms = DBDirector.getAllFilms(director);
 
 
 

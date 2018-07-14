@@ -2,6 +2,7 @@ package models;
 
 
 import javax.persistence.*;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,5 +64,13 @@ public class Director {
 
     public void setFilms(List<Film> films) {
         this.films = films;
+    }
+
+    public void addFilm(Film film){
+        this.films.add(film);
+    }
+
+    public int filmCount() {
+        return this.films.size();
     }
 }
