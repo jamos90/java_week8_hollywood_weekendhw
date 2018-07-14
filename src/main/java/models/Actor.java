@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +70,8 @@ public class Actor {
         this.films = films;
     }
 
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name ="actors_awards",
             joinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)},
@@ -92,7 +96,7 @@ public class Actor {
         this.awards.clear();
     }
 
-    public int getAwardCount() {
+    public int AwardCount() {
         return this.awards.size();
     }
 }

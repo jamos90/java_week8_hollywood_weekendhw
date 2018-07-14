@@ -1,3 +1,4 @@
+import db.DBActor;
 import db.DBHelper;
 import models.Actor;
 import models.Award;
@@ -12,6 +13,10 @@ public class Runner {
 
         Award oscar = new Award("Oscar");
         DBHelper.save(oscar);
+
+
+        DBActor.addActorToAward(actor, oscar);
+
 
 
 

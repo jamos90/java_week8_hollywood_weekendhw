@@ -1,6 +1,9 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +18,7 @@ public class Award {
 
     public Award(String name){
         this.name = name;
+        this.actors = new ArrayList<Actor>();
     }
 
     @Id
@@ -37,6 +41,7 @@ public class Award {
         this.name = name;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name ="actors_awards",
             joinColumns = {@JoinColumn(name = "award_id", nullable = false, updatable = false)},
@@ -47,5 +52,21 @@ public class Award {
 
     public void setActors(List<Actor> actors) {
         this.actors = actors;
+    }
+
+    public int actorsListSize(){
+        return this.actors.size();
+    }
+
+    public void addActor(Actor actor){
+        this.actors.add(actor);
+    }
+
+    public void remooveActorsFromAwards(Actor actor){
+        this.actors.remove(actor);
+    }
+
+    public void reamoveAllActorsFromAwards(Actor actor){
+        this.actors.clear();
     }
 }

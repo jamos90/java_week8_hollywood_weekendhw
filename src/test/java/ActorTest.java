@@ -22,7 +22,7 @@ public class ActorTest {
     @Test
     public void canAddAward(){
         actor.addAawrd(award);
-        assertEquals(1,actor.getAwardCount());
+        assertEquals(1,actor.AwardCount());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ActorTest {
         actor.addAawrd(award);
         actor.addAawrd(award2);
         actor.removeAward(award);
-        assertEquals(1,actor.getAwardCount());
+        assertEquals(1,actor.AwardCount());
     }
 
     @Test
@@ -38,6 +38,6 @@ public class ActorTest {
         actor.addAawrd(award);
         actor.addAawrd(award2);
         actor.removeAllAwards();
-        assertEquals(0,actor.getAwardCount());
+        assertEquals(0,actor.AwardCount());
     }
 }
