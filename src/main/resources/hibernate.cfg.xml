@@ -12,7 +12,7 @@
         <property name="connection.pool_size">1</property>
         <property name="show_sql">true</property>
 
-        <!--<mapping class = "models.Director"/>-->
+        <mapping class = "models.Director"/>
         <!--<mapping class = "models.Studio"/>-->
         <mapping class = "models.Actor"/>
         <mapping class = "models.Film"/>

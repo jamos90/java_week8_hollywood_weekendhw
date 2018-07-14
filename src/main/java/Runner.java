@@ -1,7 +1,6 @@
 import db.DBActor;
 import db.DBHelper;
-import models.Actor;
-import models.Award;
+import models.*;
 
 public class Runner {
 
@@ -13,6 +12,13 @@ public class Runner {
 
         Award oscar = new Award("Oscar");
         DBHelper.save(oscar);
+
+
+        Director director = new Director("Gareth Edwards", 50000);
+        DBHelper.save(director);
+
+        Film film1 = new Film("Star Wars",1000000, director, Genre.SCIFI);
+        DBHelper.save(film1);
 
 
         DBActor.addActorToAward(actor, oscar);

@@ -1,10 +1,16 @@
 package models;
 
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "directors")
+
 public class Director {
+
+
     private  int id;
     private String name;
     private double salary;

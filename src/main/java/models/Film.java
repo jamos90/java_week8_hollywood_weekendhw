@@ -12,7 +12,7 @@ public class Film {
     private  int id;
     private String title;
     private double cost;
-//    private Director director;
+    private Director director;
     private List<Actor> actors;
     private Genre genre;
 
@@ -22,7 +22,7 @@ public class Film {
     public Film(String title, double cost, Director director,Genre genre) {
         this.title = title;
         this.cost = cost;
-//        this.director = director;
+        this.director = director;
         this.actors = new ArrayList<Actor>();
         this.genre = genre;
     }
@@ -57,15 +57,15 @@ public class Film {
     public void setCost(double cost) {
         this.cost = cost;
     }
-//    @ManyToOne
-//    @JoinColumn(name = "directors_id")
-//    public Director getDirector() {
-//        return director;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "directors_id")
+    public Director getDirector() {
+        return director;
+    }
 
-//    public void setDirector(Director director) {
-//        this.director = director;
-//    }
+    public void setDirector(Director director) {
+        this.director = director;
+    }
 
 
     @ManyToMany
