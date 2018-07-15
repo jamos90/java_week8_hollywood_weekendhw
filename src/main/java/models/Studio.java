@@ -1,6 +1,7 @@
 package models;
 
 import org.hibernate.annotations.Cascade;
+import sun.tools.tree.ThrowStatement;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,22 +12,23 @@ import java.util.List;
 
 public class Studio {
 
-    private  int id;
+    private int id;
     private String name;
     private double budget;
     private List<Director> directors;
     private List<Actor> actors;
     private List<Film> films;
 
-   public Studio(){}
+    public Studio() {
+    }
 
-   public Studio(String name, double budget){
-       this.name = name;
-       this.budget = budget;
-       this.directors = new ArrayList<Director>();
-       this.actors = new ArrayList<Actor>();
-       this.films = new ArrayList<Film>();
-   }
+    public Studio(String name, double budget) {
+        this.name = name;
+        this.budget = budget;
+        this.directors = new ArrayList<Director>();
+        this.actors = new ArrayList<Actor>();
+        this.films = new ArrayList<Film>();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,6 +49,7 @@ public class Studio {
     public void setName(String name) {
         this.name = name;
     }
+
     @Column(name = "budgets")
     public double getBudget() {
         return budget;
@@ -57,12 +60,11 @@ public class Studio {
     }
 
 
-
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name = "studios_directors",
-    joinColumns = {@JoinColumn(name="studio_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name="director_id", nullable = false, updatable = false)})
+            joinColumns = {@JoinColumn(name = "studio_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "director_id", nullable = false, updatable = false)})
     public List<Director> getDirectors() {
         return directors;
     }
@@ -72,12 +74,11 @@ public class Studio {
     }
 
 
-
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
-    @JoinTable(name= "studios_actors",
-    joinColumns = {@JoinColumn(name ="studio_id", nullable = false, updatable = false)},
-    inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)})
+    @JoinTable(name = "studios_actors",
+            joinColumns = {@JoinColumn(name = "studio_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)})
     public List<Actor> getActors() {
         return actors;
     }
@@ -86,7 +87,7 @@ public class Studio {
         this.actors = actors;
     }
 
-    @OneToMany(mappedBy= "studio", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "studio", fetch = FetchType.LAZY)
     public List<Film> getFilms() {
         return films;
     }
@@ -95,23 +96,21 @@ public class Studio {
         this.films = films;
     }
 
-    public int actorsCount(){
-       return this.actors.size();
+    public int actorsCount() {
+        return this.actors.size();
     }
 
-    public boolean actorExists(Actor actor){
-       if(this.actors.contains(actor)){
-           return true;
-       }
-       else
-           return  false;
+    public boolean actorExists(Actor actor) {
+        if (this.actors.contains(actor)) {
+            return true;
+        } else
+            return false;
     }
 
-    public void addActor(Actor actor){
-       if (!actorExists(actor)){
-           this.actors.add(actor);
-        }
-       else System.out.println("Actor Already Exists");
+    public void addActor(Actor actor) {
+        if (!actorExists(actor)) {
+            this.actors.add(actor);
+        } else System.out.println("Actor Already Exists");
     }
 
 
@@ -122,7 +121,56 @@ public class Studio {
             System.out.println("Actor does not exist");
     }
 
-    public void clearActors(){
-       this.actors.clear();
+    public void clearActors() {
+        this.actors.clear();
+    }
+
+    public boolean cannAfford(double amount){
+        if(this.budget > amount){
+            return  true;
+        }
+        else return false;
+    }
+
+
+
+    public void removeActorsFee(Actor star) {
+        for (Actor actor : actors) {
+            if (cannAfford(actor.getFee()) && actor == star){
+                this.budget -= actor.getFee();
+            } else {
+                return;
+            }
+        }
+    }
+
+    public void removeDirectorsFee(Director leader){
+        for (Director director : directors){
+            if (cannAfford(director.getSalary()) && director == leader){
+                this.budget -= director.getSalary();
+            }
+            else return;
+        }
+    }
+
+    public void removeFilmCost(Film picture){
+        for (Film film : films){
+            if (cannAfford(film.getCost()) && film == picture){
+                this.budget -= film.getCost();
+            }
+            else return;
+        }
+    }
+
+    public void payActor(Actor actor){
+       double pay = actor.getFee();
+       actor.addToMoney(pay);
+    }
+
+    public void makeFilm(Film film, Actor actor, Director director){
+        removeActorsFee(actor);
+        removeFilmCost(film);
+        removeDirectorsFee(director);
+        payActor(actor);
     }
 }

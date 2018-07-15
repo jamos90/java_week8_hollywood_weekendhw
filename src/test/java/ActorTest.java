@@ -14,7 +14,7 @@ public class ActorTest {
 
     @Before
     public void setUp(){
-        actor = new Actor("Feleity Jones",500000);
+        actor = new Actor("Feleity Jones",500000,0);
         award = new Award("Oscar");
         award = new Award("Razzy");
     }

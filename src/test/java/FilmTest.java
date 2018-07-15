@@ -15,7 +15,7 @@ public class FilmTest {
     @Before
     public void setUp(){
         director = new Director("Gareth Edwards", 500000);
-        actor = new Actor("Felicity Jones", 400000);
+        actor = new Actor("Felicity Jones", 400000,0);
         studio = new Studio("Paramount",2000000);
         film = new Film("Star Wars",2000000, director, Genre.SCIFI,studio);
     }

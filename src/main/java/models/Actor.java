@@ -13,6 +13,7 @@ public class Actor {
     private  int id;
     private String name;
     private double fee;
+    private double money;
     private List<Film> films;
     private List<Award> awards;
     private List<Studio> studios;
@@ -21,9 +22,10 @@ public class Actor {
 
     public Actor(){}
 
-    public Actor(String name, double fee){
+    public Actor(String name, double fee, double money){
         this.name = name;
         this.fee = fee;
+        this.money = money;
         this.films = new ArrayList<Film>();
         this.awards = new ArrayList<Award>();
         this.studios = new ArrayList<Studio>();
@@ -95,6 +97,15 @@ public class Actor {
         return studios;
     }
 
+    @Column(name = "money")
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
     public void setStudios(List<Studio> studios) {
         this.studios = studios;
     }
@@ -118,5 +129,11 @@ public class Actor {
     public void addStudio(Studio studio){
         this.studios.add(studio);
     }
+
+    public void addToMoney(double amount){
+        this.money += amount;
+    }
+
+
 
 }

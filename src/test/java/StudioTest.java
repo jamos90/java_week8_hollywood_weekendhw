@@ -10,6 +10,7 @@ import static junit.framework.Assert.assertNotNull;
 public class StudioTest {
 
     Studio studio;
+    Studio studio2;
     Actor actor;
     Actor actor2;
     Director director;
@@ -17,8 +18,9 @@ public class StudioTest {
     @Before
     public void setUp(){
         studio = new Studio("Paramount", 2000000);
-        actor = new Actor("James", 2003);
-        actor2 = new Actor("James", 2003);
+        studio2 = new Studio("Tri Star", 1000);
+        actor = new Actor("James", 2003,0);
+        actor2 = new Actor("James", 2003,0);
     }
 
     @Test
@@ -46,6 +48,20 @@ public class StudioTest {
         studio.addActor(actor);
         studio.addActor(actor);
         assertEquals(1,studio.actorsCount());
+    }
+
+    @Test
+    public void canAffordToMakeMovieActor(){
+        studio.addActor(actor);
+        studio.removeActorsFee(actor);
+        assertEquals(1997997,studio.getBudget(),0.1);
+    }
+
+    @Test
+    public void cannotAffordMovieActor(){
+        studio2.addActor(actor);
+        studio2.removeActorsFee(actor);
+        assertEquals(1000,studio2.getBudget(),0.1);
     }
 }
 
