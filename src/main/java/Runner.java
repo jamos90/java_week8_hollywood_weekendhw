@@ -29,6 +29,8 @@ public class Runner {
         Film film2 = new Film("Monsters", 2000000,director, Genre.SCIFI,studio);
         DBHelper.save(film2);
 
+        film1.setTitle("Rouge One");
+        DBHelper.update(film1);
 
         DBActor.addActorToAward(actor, oscar);
 
