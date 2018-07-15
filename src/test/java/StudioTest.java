@@ -1,6 +1,4 @@
-import models.Actor;
-import models.Director;
-import models.Studio;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +12,7 @@ public class StudioTest {
     Actor actor;
     Actor actor2;
     Director director;
+    Film film;
 
     @Before
     public void setUp(){
@@ -21,6 +20,9 @@ public class StudioTest {
         studio2 = new Studio("Tri Star", 1000);
         actor = new Actor("James", 2003,0);
         actor2 = new Actor("James", 2003,0);
+        director = new Director("Gareth Edwards", 5000);
+        film = new Film("Rouge One", 2000,director, Genre.SCIFI, studio);
+
     }
 
     @Test
@@ -62,6 +64,21 @@ public class StudioTest {
         studio2.addActor(actor);
         studio2.removeActorsFee(actor);
         assertEquals(1000,studio2.getBudget(),0.1);
+    }
+
+    @Test
+    public void canPayActor(){
+        studio.payActor(actor);
+        assertEquals(2003,actor.getMoney(),0.1);
+    }
+
+    @Test
+    public void makeMovieWorks(){
+        studio.addActor(actor);
+        studio.addDirector(director);
+        studio.addFilm(film);
+        studio.makeFilm(film,actor,director);
+        assertEquals(1990997,studio.getBudget(),0.1);
     }
 }
 

@@ -121,6 +121,22 @@ public class Studio {
             System.out.println("Actor does not exist");
     }
 
+    public void addDirector(Director director){
+        this.directors.add(director);
+    }
+
+    public void removeDirector(Director director){
+        this.directors.remove(director);
+    }
+
+    public void removeFilm(Film film){
+        this.films.remove(film);
+    }
+
+    public void addFilm(Film film){
+        this.films.add(film);
+    }
+
     public void clearActors() {
         this.actors.clear();
     }
