@@ -69,4 +69,20 @@ public class Award {
     public void reamoveAllActorsFromAwards(Actor actor){
         this.actors.clear();
     }
+
+    public void giveAwards(Film film, Actor actor){
+        if (film.getRating() >= 4) {
+            Award oscar = new Award("Oscar");
+            actor.addAawrd(oscar);
+        }
+
+         if (film.getRating() == 3){
+           return;
+        }
+
+        if (film.getRating() <= 2){
+            Award razzy = new Award(("Razzy"));
+            actor.addAawrd(razzy);
+        }
+    }
 }

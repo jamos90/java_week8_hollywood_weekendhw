@@ -16,13 +16,13 @@ public class ActorTest {
     public void setUp(){
         actor = new Actor("Feleity Jones",500000,0);
         award = new Award("Oscar");
-        award = new Award("Razzy");
+        award2 = new Award("Razzy");
     }
 
     @Test
     public void canAddAward(){
         actor.addAawrd(award);
-        assertEquals(1,actor.AwardCount());
+        assertEquals(1,actor.awardCount());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ActorTest {
         actor.addAawrd(award);
         actor.addAawrd(award2);
         actor.removeAward(award);
-        assertEquals(1,actor.AwardCount());
+        assertEquals(1,actor.awardCount());
     }
 
     @Test
@@ -38,6 +38,6 @@ public class ActorTest {
         actor.addAawrd(award);
         actor.addAawrd(award2);
         actor.removeAllAwards();
-        assertEquals(0,actor.AwardCount());
+        assertEquals(0,actor.awardCount());
     }
 }

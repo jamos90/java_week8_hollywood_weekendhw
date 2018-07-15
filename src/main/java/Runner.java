@@ -20,13 +20,13 @@ public class Runner {
         Director director = new Director("Gareth Edwards", 50000);
         DBHelper.save(director);
 
-        Film film1 = new Film("Star Wars",1000000, director, Genre.SCIFI,studio);
+        Film film1 = new Film("Star Wars",1000000, director, Genre.SCIFI,studio,4);
         DBHelper.save(film1);
 
-        Film film2 = new Film("Monsters", 2000000,director, Genre.SCIFI,studio);
+        Film film2 = new Film("Monsters", 2000000,director, Genre.SCIFI,studio,3);
         DBHelper.save(film2);
 
-        Film film3 = new Film("Hireditory", 30000,director, Genre.HORROR,studio);
+        Film film3 = new Film("Hireditory", 30000,director, Genre.HORROR,studio,2);
         DBHelper.save(film3);
 
         film1.setTitle("Rouge One");
@@ -49,6 +49,7 @@ public class Runner {
 
         List<Film> actorsFilmsGenere = DBActor.getAllActorsFilmsGenre(actor, Genre.SCIFI);
 
+        List<Actor> studiosActors = DBStudio.getStudiosActor(studio);
 
 
 

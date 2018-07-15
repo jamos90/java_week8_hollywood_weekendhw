@@ -1,6 +1,8 @@
 package models;
 
+import org.hibernate.StaleStateException;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.SourceType;
 import sun.tools.tree.ThrowStatement;
 
 import javax.persistence.*;
@@ -107,6 +109,13 @@ public class Studio {
             return false;
     }
 
+    public boolean directorExists(Director director){
+        if (this.directors.contains(director)){
+            return true;
+        }
+        else return false;
+    }
+
     public void addActor(Actor actor) {
         if (!actorExists(actor)) {
             this.actors.add(actor);
@@ -122,7 +131,11 @@ public class Studio {
     }
 
     public void addDirector(Director director){
-        this.directors.add(director);
+        if (!directorExists(director)) {
+            this.directors.add(director);
+        }
+        else
+            System.out.println("Director Already Exists");
     }
 
     public void removeDirector(Director director){

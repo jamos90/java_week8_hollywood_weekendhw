@@ -37,4 +37,20 @@ public class DBStudio {
         actor.addStudio(studio);
         DBHelper.update(studio);
     }
+
+    public static List<Actor> getStudiosActor(Studio studio){
+        List<Actor> actors = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            Criteria cr = session.createCriteria(Actor.class);
+            cr.createAlias("studios", "studio");
+            cr.add(Restrictions.eq("studio.id",studio.getId()));
+            actors = cr.list();
+        } catch (HibernateException e){
+        }
+        finally {
+            session.close();
+        }
+        return actors;
+    }
 }

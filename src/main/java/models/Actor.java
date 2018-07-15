@@ -126,7 +126,7 @@ public class Actor {
         this.awards.clear();
     }
 
-    public int AwardCount() {
+    public int awardCount() {
         return this.awards.size();
     }
 

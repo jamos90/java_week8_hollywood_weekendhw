@@ -18,17 +18,19 @@ public class Film {
     private List<Actor> actors;
     private Genre genre;
     private Studio studio;
+    private int rating;
 
 
     public Film(){}
 
-    public Film(String title, double cost, Director director,Genre genre, Studio studio) {
+    public Film(String title, double cost, Director director,Genre genre, Studio studio, int rating) {
         this.title = title;
         this.cost = cost;
         this.director = director;
         this.actors = new ArrayList<Actor>();
         this.genre = genre;
         this.studio = studio;
+        this.rating = rating;
     }
 
     @Id
@@ -123,6 +125,15 @@ public class Film {
 
     public void setStudio(Studio studio) {
         this.studio = studio;
+    }
+
+    @Column(name = "ratings")
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }
 

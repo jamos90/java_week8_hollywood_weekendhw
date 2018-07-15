@@ -21,7 +21,7 @@ public class StudioTest {
         actor = new Actor("James", 2003,0);
         actor2 = new Actor("James", 2003,0);
         director = new Director("Gareth Edwards", 5000);
-        film = new Film("Rouge One", 2000,director, Genre.SCIFI, studio);
+        film = new Film("Rouge One", 2000,director, Genre.SCIFI, studio,4);
 
     }
 

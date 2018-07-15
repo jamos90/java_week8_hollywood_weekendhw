@@ -18,7 +18,7 @@ public class DirectorTest {
 
         director = new Director("Gareth Edwards",500000);
         studio = new Studio("Paramount", 5000000);
-        film = new Film("Rouge One", 403000, director, Genre.SCIFI,studio);
+        film = new Film("Rouge One", 403000, director, Genre.SCIFI,studio,2);
     }
 
     @Test
