@@ -36,6 +36,8 @@ public class Runner {
 
         List<Film> directorsFilms = DBDirector.getAllFilms(director);
 
+        List<Film> studiosFilms = DBStudio.getStudiosActors(studio);
+
 
 
 

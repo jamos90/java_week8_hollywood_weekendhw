@@ -1,6 +1,7 @@
 package db;
 
 import models.Actor;
+import models.Film;
 import models.Studio;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -15,20 +16,20 @@ public class DBStudio {
     private static Transaction transaction;
     private static Session session;
 
-    public static List<Actor> getStudiosActors(Studio studio){
-        List<Actor> actors = null;
+    public static List<Film> getStudiosActors(Studio studio){
+        List<Film> films = null;
         session = HibernateUtil.getSessionFactory().openSession();
         try{
-            Criteria cr = session.createCriteria(Actor.class);
-            cr.add(Restrictions.eq("studios", studio));
-            actors = cr.list();
+            Criteria cr = session.createCriteria(Film.class);
+            cr.add(Restrictions.eq("studio", studio));
+            films = cr.list();
         } catch(HibernateException e){
             e.printStackTrace();
         }
         finally {
             session.close();
         }
-        return actors;
+        return films;
     }
 
     public static void addActorToStudio(Studio studio, Actor actor){
