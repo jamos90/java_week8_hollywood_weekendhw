@@ -1,5 +1,4 @@
-import models.Actor;
-import models.Award;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,6 +9,9 @@ public class ActorTest {
     Actor actor;
     Award award;
     Award award2;
+    Film film;
+    Director director;
+    Studio studio;
 
 
     @Before
@@ -17,6 +19,9 @@ public class ActorTest {
         actor = new Actor("Feleity Jones",500000,0);
         award = new Award("Oscar");
         award2 = new Award("Razzy");
+        director = new Director("Stephen",300);
+        studio = new Studio("Paramount", 30000);
+        film = new Film("Once", 200, director,Genre.DRAMA,studio,4);
     }
 
     @Test
@@ -39,5 +44,11 @@ public class ActorTest {
         actor.addAawrd(award2);
         actor.removeAllAwards();
         assertEquals(0,actor.awardCount());
+    }
+
+    @Test
+    public void returnsStringWithFilm(){
+        actor.addFilm(film);
+        assertEquals("I'm acting in Once", actor.act());
     }
 }

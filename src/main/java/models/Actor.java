@@ -1,5 +1,6 @@
 package models;
 
+import behaviour.IAct;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "actors")
 
-public class Actor {
+public class Actor implements IAct {
     private  int id;
     private String name;
     private double fee;
@@ -138,6 +139,11 @@ public class Actor {
         this.money += amount;
     }
 
-
-
+    public String act() {
+       String actingFilm = "I'm acting in ";
+        for(Film flick : films){
+            actingFilm += flick.getTitle();
+        }
+        return actingFilm;
+    }
 }
