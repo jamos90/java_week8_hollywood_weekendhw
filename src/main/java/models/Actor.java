@@ -74,6 +74,10 @@ public class Actor {
         this.films = films;
     }
 
+    public void addFilm(Film film){
+        this.films.add(film);
+    }
+
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany

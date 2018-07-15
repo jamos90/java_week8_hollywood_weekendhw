@@ -1,7 +1,4 @@
-import db.DBActor;
-import db.DBDirector;
-import db.DBHelper;
-import db.DBStudio;
+import db.*;
 import models.*;
 
 import java.util.List;
@@ -29,6 +26,9 @@ public class Runner {
         Film film2 = new Film("Monsters", 2000000,director, Genre.SCIFI,studio);
         DBHelper.save(film2);
 
+        Film film3 = new Film("Hireditory", 30000,director, Genre.HORROR,studio);
+        DBHelper.save(film3);
+
         film1.setTitle("Rouge One");
         DBHelper.update(film1);
 
@@ -36,9 +36,18 @@ public class Runner {
 
         DBStudio.addActorToStudio(studio, actor);
 
+        DBFilm.addActors(actor, film1);
+        DBFilm.addActors(actor, film2);
+        DBFilm.addActors(actor, film3);
+
+
         List<Film> directorsFilms = DBDirector.getAllFilms(director);
 
         List<Film> studiosFilms = DBStudio.getStudiosActors(studio);
+
+        List<Film> actorsFilms = DBActor.getAllActorsFilms(actor);
+
+        List<Film> actorsFilmsGenere = DBActor.getAllActorsFilmsGenre(actor, Genre.SCIFI);
 
 
 
