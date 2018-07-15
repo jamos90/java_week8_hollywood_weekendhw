@@ -114,13 +114,12 @@ public class Studio {
        else System.out.println("Actor Already Exists");
     }
 
-//    public void addActor(Actor actor){
-//
-//            this.actors.add(actor);
-//        }
 
-    public void removeActor(Actor actor){
-       this.actors.remove(actor);
+    public void removeActor(Actor actor) {
+        if (this.actors.contains(actor)) {
+            this.actors.remove(actor);
+        } else
+            System.out.println("Actor does not exist");
     }
 
     public void clearActors(){

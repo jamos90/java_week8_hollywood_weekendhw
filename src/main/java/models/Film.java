@@ -95,12 +95,24 @@ public class Film {
         this.genre = genre;
     }
 
+    public boolean actorExists(Actor actor){
+        if (actors.contains(actor)){
+            return  true;
+        } else {
+            return false;
+        }
+    }
+
     public int actorsCount() {
        return this.actors.size();
     }
 
     public void addActor(Actor actor) {
+        if(!actorExists(actor)){
         this.actors.add(actor);
+        } else {
+            System.out.println("Actor Already Exists");
+        }
     }
 
     @ManyToOne

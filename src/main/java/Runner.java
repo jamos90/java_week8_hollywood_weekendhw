@@ -1,6 +1,7 @@
 import db.DBActor;
 import db.DBDirector;
 import db.DBHelper;
+import db.DBStudio;
 import models.*;
 
 import java.util.List;
@@ -31,7 +32,10 @@ public class Runner {
 
         DBActor.addActorToAward(actor, oscar);
 
+        DBStudio.addActorToStudio(studio, actor);
+
         List<Film> directorsFilms = DBDirector.getAllFilms(director);
+
 
 
 

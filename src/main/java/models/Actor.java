@@ -115,4 +115,8 @@ public class Actor {
         return this.awards.size();
     }
 
+    public void addStudio(Studio studio){
+        this.studios.add(studio);
+    }
+
 }
