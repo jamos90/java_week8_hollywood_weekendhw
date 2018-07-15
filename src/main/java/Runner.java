@@ -17,6 +17,7 @@ public class Runner {
         DBHelper.save(oscar);
 
         Studio studio = new Studio("Paramount",500000000);
+        DBHelper.save(studio);
 
         Director director = new Director("Gareth Edwards", 50000);
         DBHelper.save(director);

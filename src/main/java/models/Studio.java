@@ -39,7 +39,7 @@ public class Studio {
         this.id = id;
     }
 
-    @Column(name = "id")
+    @Column(name = "names")
     public String getName() {
         return name;
     }
@@ -47,7 +47,7 @@ public class Studio {
     public void setName(String name) {
         this.name = name;
     }
-    @Column(name = "budget")
+    @Column(name = "budgets")
     public double getBudget() {
         return budget;
     }
