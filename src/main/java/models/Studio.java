@@ -94,4 +94,36 @@ public class Studio {
     public void setFilms(List<Film> films) {
         this.films = films;
     }
+
+    public int actorsCount(){
+       return this.actors.size();
+    }
+
+    public boolean actorExists(Actor actor){
+       if(this.actors.contains(actor)){
+           return true;
+       }
+       else
+           return  false;
+    }
+
+    public void addActor(Actor actor){
+       if (!actorExists(actor)){
+           this.actors.add(actor);
+        }
+       else System.out.println("Actor Already Exists");
+    }
+
+//    public void addActor(Actor actor){
+//
+//            this.actors.add(actor);
+//        }
+
+    public void removeActor(Actor actor){
+       this.actors.remove(actor);
+    }
+
+    public void clearActors(){
+       this.actors.clear();
+    }
 }
