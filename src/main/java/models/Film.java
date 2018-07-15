@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +17,18 @@ public class Film {
     private Director director;
     private List<Actor> actors;
     private Genre genre;
+    private Studio studio;
 
 
     public Film(){}
 
-    public Film(String title, double cost, Director director,Genre genre) {
+    public Film(String title, double cost, Director director,Genre genre, Studio studio) {
         this.title = title;
         this.cost = cost;
         this.director = director;
         this.actors = new ArrayList<Actor>();
         this.genre = genre;
+        this.studio = studio;
     }
 
     @Id
@@ -67,7 +71,7 @@ public class Film {
         this.director = director;
     }
 
-
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name = "actors_films",
     joinColumns = {@JoinColumn(name="film_id",nullable = false, updatable = false)},
@@ -97,6 +101,16 @@ public class Film {
 
     public void addActor(Actor actor) {
         this.actors.add(actor);
+    }
+
+    @ManyToOne
+    @JoinColumn(name="studios_id")
+    public Studio getStudio() {
+        return studio;
+    }
+
+    public void setStudio(Studio studio) {
+        this.studio = studio;
     }
 }
 

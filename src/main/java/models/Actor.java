@@ -15,6 +15,7 @@ public class Actor {
     private double fee;
     private List<Film> films;
     private List<Award> awards;
+    private List<Studio> studios;
 
 
 
@@ -25,6 +26,7 @@ public class Actor {
         this.fee = fee;
         this.films = new ArrayList<Film>();
         this.awards = new ArrayList<Award>();
+        this.studios = new ArrayList<Studio>();
     }
 
 
@@ -82,6 +84,19 @@ public class Actor {
 
     public void setAwards(List<Award> awards) {
         this.awards = awards;
+    }
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(name = "studios_actors",
+    joinColumns = {@JoinColumn(name="actor_id", nullable = false, updatable = false)},
+    inverseJoinColumns = {@JoinColumn(name="studio_id", nullable = false, updatable = false)})
+    public List<Studio> getStudios() {
+        return studios;
+    }
+
+    public void setStudios(List<Studio> studios) {
+        this.studios = studios;
     }
 
     public void addAawrd(Award award){

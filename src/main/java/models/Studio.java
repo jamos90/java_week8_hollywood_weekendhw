@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +56,9 @@ public class Studio {
         this.budget = budget;
     }
 
+
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name = "studios_directors",
     joinColumns = {@JoinColumn(name="studio_id", nullable = false, updatable = false)},
@@ -67,6 +72,8 @@ public class Studio {
     }
 
 
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name= "studios_actors",
     joinColumns = {@JoinColumn(name ="studio_id", nullable = false, updatable = false)},

@@ -16,14 +16,15 @@ public class Runner {
         Award oscar = new Award("Oscar");
         DBHelper.save(oscar);
 
+        Studio studio = new Studio("Paramount",500000000);
 
         Director director = new Director("Gareth Edwards", 50000);
         DBHelper.save(director);
 
-        Film film1 = new Film("Star Wars",1000000, director, Genre.SCIFI);
+        Film film1 = new Film("Star Wars",1000000, director, Genre.SCIFI,studio);
         DBHelper.save(film1);
 
-        Film film2 = new Film("Monsters", 2000000,director, Genre.SCIFI);
+        Film film2 = new Film("Monsters", 2000000,director, Genre.SCIFI,studio);
         DBHelper.save(film2);
 
 
