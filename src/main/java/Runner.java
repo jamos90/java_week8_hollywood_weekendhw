@@ -51,6 +51,8 @@ public class Runner {
 
         List<Actor> studiosActors = DBStudio.getStudiosActor(studio);
 
+        List<Actor> filmsActors = DBFilm.getFilmsActors(film1);
+
 
 
 
